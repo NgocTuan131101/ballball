@@ -1,0 +1,45 @@
+name: BallBall
+description: A new Flutter project.
+version: 1.0.0+1
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter  
+
+  
+  introduction_screen: 
+  cupertino_icons: ^1.0.2
+  liquid_swipe: ^3.1.0
+  flutter_svg: ^1.1.6
+  full_screen_image : ^2.0.0 
+  flutter_phosphor_icons: ^0.0.1+6
+  smooth_page_indicator : ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/inter/inter_Bungee_Regular.ttf
+          weight: 400
+
+        
+   
+
+
+ 
