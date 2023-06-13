@@ -1,5 +1,5 @@
 
-import 'package:BallBall/src/onboadrding/onboarding_page.dart';
+import 'package:BallBall/src/widgets/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
