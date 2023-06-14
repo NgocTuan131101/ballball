@@ -45,6 +45,16 @@ class OnboadrdingPage extends StatelessWidget {
                   );
                 }),
             Positioned(
+              right: 15,
+              top: 20,
+              child: Row(
+              children: const [
+                Text('Bỏ qua',style: TextStyle(fontSize: 18,color: Colors.white,decoration: TextDecoration.underline),
+                ),
+              ],
+            ),
+            ),
+            Positioned(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
@@ -61,23 +71,37 @@ class OnboadrdingPage extends StatelessWidget {
                             shape: BoxShape.circle),
                       );
                     }),
-                  )),
+                  ),
+              ),
             ),
             Positioned(
-              right: 20,
-              bottom: 20,
-              child: Container(
-                margin: const EdgeInsets.all(0),
-                child: ElevatedButton(
-                  onPressed: _controller.forwarAction,
-                  child: const Text(
-                    'Tiếp tục',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+              bottom: 60,
+              right: 28,
+              child: InkWell(
+                onTap: (){
+                  _controller.forwarAction();
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Text(
+                        'Tiếp tục',
+                        style: TextStyle(fontSize: 16,
+                        color : Colors.black54
+                        ),
+                      ),
+                      SizedBox(width: 0.0),
+                      Icon(Icons.navigate_next,color: Colors.black54,
+                      ),
+                    ],
                   ),
                 ),
-
               ),
             )
           ],

@@ -7,8 +7,12 @@ import 'package:get/utils.dart';
 
 class OnboardingController extends GetxController {
  var selectedPageeIndex = 0.obs;
+ bool get isLastPage => selectedPageeIndex.value == OnboadrdingPage.length -1;
  var pageController = PageController();
  forwarAction(){
+  if(isLastPage){
+
+  }else
   pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
  }
  List<OnboardingInfo> OnboadrdingPage = [
