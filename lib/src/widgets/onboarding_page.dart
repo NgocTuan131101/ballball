@@ -45,14 +45,25 @@ class OnboadrdingPage extends StatelessWidget {
                   );
                 }),
             Positioned(
-              right: 15,
-              top: 20,
-              child: Row(
-              children: const [
-                Text('Bỏ qua',style: TextStyle(fontSize: 18,color: Colors.white,decoration: TextDecoration.underline),
-                ),
-              ],
-            ),
+              right: 0,
+              top: 16,
+              child: Column(
+                children: [
+                  Container(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                        },
+                        child: const Text(
+                          'Bỏ qua',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              decoration: TextDecoration.underline),
+                        ),
+                      ))
+                ],
+              ),
             ),
             Positioned(
               child: Row(
