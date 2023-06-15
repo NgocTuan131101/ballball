@@ -85,24 +85,26 @@ class OnboadrdingPage extends StatelessWidget {
                 ],
               ),
             ),
+
             Positioned(
               left: 4,
               top: 16,
-              child: TextButton.icon(
-                onPressed: () {
-                  _controller.backAction();
-                },
-                style: ElevatedButton.styleFrom(),
-                icon: const Icon(
-                  Icons.arrow_back_ios_outlined,
-                  color: Colors.white,
-                  size: 18,
-                ),
-                label: const Text(
-                  "Quay lại",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-              ),
+              child: Visibility(
+                  visible: _controller.selectedPageeIndex.value < 1,
+                  child: TextButton.icon(
+                      onPressed: () {
+                        _controller.backAction();
+                      },
+                      style: ElevatedButton.styleFrom(),
+                      icon: const Icon(
+                        Icons.arrow_back_ios_outlined,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                      label: const Text(
+                        "Quay lại",
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ))),
             ),
             Positioned(
               bottom: 60,
