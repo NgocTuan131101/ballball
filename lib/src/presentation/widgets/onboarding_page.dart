@@ -1,6 +1,5 @@
-import 'dart:math';
 
-import 'package:BallBall/src/onboadrding/onboarding_Controller.dart';
+import 'package:BallBall/src/presentation/onboadrding/onboarding_Controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
