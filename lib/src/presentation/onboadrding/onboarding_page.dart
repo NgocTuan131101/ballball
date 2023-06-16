@@ -1,4 +1,5 @@
 import 'package:BallBall/src/presentation/onboadrding/onboarding_Controller.dart';
+import 'package:BallBall/src/presentation/phone_login/splash/splash.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,8 @@ class OnboadrdingPage extends StatelessWidget {
           children: [
             PageView.builder(
                 controller: _controller.pageController,
-                onPageChanged: _controller.selectedPageeIndex,
+                onPageChanged: (value) =>
+                    _controller.selectedPageeIndex.value = value,
                 itemCount: _controller.OnboadrdingPage.length,
                 itemBuilder: (context, index) {
                   return Stack(
@@ -53,13 +55,22 @@ class OnboadrdingPage extends StatelessWidget {
                   (index) => Obx(() {
                     return Container(
                       margin: const EdgeInsets.all(4),
-                      width: 12,
+                      width: _controller.selectedPageeIndex.value == index
+                          ? 32
+                          : 12,
                       height: 12,
                       decoration: BoxDecoration(
-                          color: _controller.selectedPageeIndex.value == index
-                              ? Colors.green
-                              : Colors.white,
-                          shape: BoxShape.circle),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(
+                            _controller.selectedPageeIndex.value == index
+                                ? 6
+                                : 99),
+                        border: Border.all(
+                            color: _controller.selectedPageeIndex.value == index
+                                ? Colors.green
+                                : Colors.white,
+                            width: 4),
+                      ),
                     );
                   }),
                 ),
@@ -73,7 +84,10 @@ class OnboadrdingPage extends StatelessWidget {
                   Container(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => Splash()));
+                        },
                         child: const Text(
                           'Bỏ qua',
                           style: TextStyle(
@@ -85,13 +99,11 @@ class OnboadrdingPage extends StatelessWidget {
                 ],
               ),
             ),
-
             Positioned(
               left: 4,
               top: 16,
-              child: Visibility(
-                  visible: _controller.selectedPageeIndex.value < 1,
-                  child: TextButton.icon(
+              child: Obx(() => _controller.selectedPageeIndex.value > 0
+                  ? TextButton.icon(
                       onPressed: () {
                         _controller.backAction();
                       },
@@ -104,14 +116,36 @@ class OnboadrdingPage extends StatelessWidget {
                       label: const Text(
                         "Quay lại",
                         style: TextStyle(fontSize: 18, color: Colors.white),
-                      ))),
+                      ))
+                  : const SizedBox()),
+              // Visibility(
+              //     visible: _controller.selectedPageeIndex.value < 1 ,
+              //     child: TextButton.icon(
+              //         onPressed: () {
+              //           _controller.backAction();
+              //         },
+              //         style: ElevatedButton.styleFrom(),
+              //         icon: const Icon(
+              //           Icons.arrow_back_ios_outlined,
+              //           color: Colors.white,
+              //           size: 18,
+              //         ),
+              //         label: const Text(
+              //           "Quay lại",
+              //           style: TextStyle(fontSize: 18, color: Colors.white),
+              //         ))),
             ),
             Positioned(
               bottom: 60,
               right: 28,
               child: InkWell(
                 onTap: () {
-                  _controller.forwarAction();
+                  if (_controller.selectedPageeIndex < 2) {
+                    _controller.forwarAction();
+                  } else {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => Splash()));
+                  }
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
